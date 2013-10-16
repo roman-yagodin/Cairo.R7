@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ItemType>PackagingProject</ItemType>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{927F4D42-3F97-42D1-A106-A5B15E891E0A}</ProjectGuid>
+    <Packages>
+      <Packages>
+        <Package name="cairo.r7-1.0-binaries">
+          <Builder targetFile="..\cairo.r7-1.0-binaries.tar.gz" platform="Linux" configuration="Debug" ctype="BinariesZipPackageBuilder">
+            <ChildEntries>
+              <SolutionItemReference path="..\Cairo.R7\Cairo.R7.csproj" />
+              <SolutionItemReference path="..\Cairo.R7.Demo\Cairo.R7.Demo.csproj" />
+              <SolutionItemReference path="..\Cairo.R7.Anim\Cairo.R7.Anim.csproj" />
+              <SolutionItemReference path="..\Cairo.R7.Bubbles\Cairo.R7.Bubbles.csproj" />
+            </ChildEntries>
+            <RootEntry path="..\Cairo.R7.sln" id=":root:" />
+          </Builder>
+        </Package>
+        <Package name="cairo.r7-1.0-sources">
+          <Builder targetFile="..\cairo.r7-1.0-sources.tar.gz" format="MonoDevelop.Projects.FileFormat" ctype="SourcesZipPackageBuilder">
+            <ChildEntries>
+              <SolutionItemReference path="..\Cairo.R7\Cairo.R7.csproj" />
+              <SolutionItemReference path="..\Cairo.R7.Demo\Cairo.R7.Demo.csproj" />
+              <SolutionItemReference path="Packages.mdproj" />
+              <SolutionItemReference path="..\Cairo.R7.Anim\Cairo.R7.Anim.csproj" />
+              <SolutionItemReference path="..\Cairo.R7.Bubbles\Cairo.R7.Bubbles.csproj" />
+            </ChildEntries>
+            <RootEntry path="..\Cairo.R7.sln" id=":root:" />
+          </Builder>
+        </Package>
+        <Package name="cairo-r7-1.0">
+          <Builder TargetDirectory=".." DefaultConfiguration="Release" ctype="TarballDeployTarget">
+            <ChildEntries>
+              <SolutionItemReference path="..\Cairo.R7\Cairo.R7.csproj" />
+              <SolutionItemReference path="..\Cairo.R7.Demo\Cairo.R7.Demo.csproj" />
+              <SolutionItemReference path="..\Cairo.R7.Anim\Cairo.R7.Anim.csproj" />
+              <SolutionItemReference path="..\Cairo.R7.Bubbles\Cairo.R7.Bubbles.csproj" />
+            </ChildEntries>
+            <RootEntry path="..\Cairo.R7.sln" id=":root:" />
+          </Builder>
+        </Package>
+      </Packages>
+    </Packages>
+    <ReleaseVersion>1.0</ReleaseVersion>
+  </PropertyGroup>
+</Project>
