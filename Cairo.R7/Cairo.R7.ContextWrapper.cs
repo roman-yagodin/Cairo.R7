@@ -326,8 +326,27 @@ namespace Cairo.R7
 
 		public void RegularPolygon (double xc, double yc, double radius, int parts)
 		{
-			// 2 variants
+			PointD[] pts;
 
+			if (parts > 1) 
+			{
+				pts = new PointD[parts];
+				var alpha = 0.0;
+
+				for (var i = 0; i < parts; i++) 
+				{
+					pts[i].X = radius * Math.Cos (alpha) + xc;
+					pts[i].Y = radius * Math.Sin (alpha) + yc;
+					alpha += Angle.PI (2, parts);
+				}
+
+				Polygon (pts);
+			}
+		}
+
+		public void RegularPolygon (PointD center, double radius, int parts)
+		{
+			RegularPolygon (center.X, center.Y, radius, parts);
 		}
 
 		public void StarPolygon (double xc, double yc, double innerRadius, double outerRadius, int parts)
