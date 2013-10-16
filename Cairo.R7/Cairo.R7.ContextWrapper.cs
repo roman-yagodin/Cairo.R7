@@ -276,14 +276,27 @@ namespace Cairo.R7
 				
 		public void Polyline (ICollection<PointD> points)
 		{
+			if (points.Count > 0)
+			{
+				var first = true;
 
+				foreach (var point in points)
+				{
+					if (first)
+					{
+						context.MoveTo (point);
+						first = false;
+					}
+					else
+						context.LineTo (point);
+				}
+			}
 		}
 
 		public void Polyline (PointD[] points)
 		{
-
+			Polyline((ICollection<PointD>)points);
 		}
-
 
 		public void Polygon (ICollection<PointD> points)
 		{
