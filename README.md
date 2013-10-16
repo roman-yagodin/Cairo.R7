@@ -21,8 +21,7 @@ Example
 
 A basic sample (original Mono.Cairo): 
 
-{{{
-using Cairo;
+<pre>using Cairo;
 ...
 
 protected void OnDrawingAreaExposeEvent (object o, Gtk.ExposeEventArgs args)
@@ -35,16 +34,34 @@ protected void OnDrawingAreaExposeEvent (object o, Gtk.ExposeEventArgs args)
    ); 
     
    gc.Translate (center.X, center.Y);
-
    gc.Arc (0, 0, 100, 0, 2 * Math.PI);
-    
+
    gc.Color = new Color (1, 1, 0);
    gc.FillPreserve();
-   
    gc.Color = new Color (0, 0, 0);
    gc.Stroke();
 
    ((IDisposable)gc.Target).Dispose ();
    ((IDisposable)gc).Dispose ();
-}
-}}}
+}</pre>
+
+A basic sample (using Cairo.R7): 
+
+<pre>using Cairo;
+using Cairo.R7;
+...
+
+protected void OnDrawingAreaExposeEvent (object o, Gtk.ExposeEventArgs args)
+{
+   var cw = new ContextWrapper(o);
+   
+   cw.Translate (cw.Center);
+   cw.Circle (0, 0, 100);
+    
+   cw.Color = new Color2 ("yellow");
+   cw.Context.FillPreserve();
+   cw.Color = new Color2 ("#000");
+   cw.Context.Stroke();
+
+   cw.Close();
+}</pre>
